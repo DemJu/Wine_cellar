@@ -1,7 +1,6 @@
 package ru.typeAlcohol;
 
 import ru.Barrel;
-
 import java.util.Calendar;
 
 public class Champagne extends Barrel {

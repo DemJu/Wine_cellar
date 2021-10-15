@@ -1,38 +1,45 @@
 package ru;
 
-import java.util.ArrayList;
+import lombok.Data;
+import java.util.HashMap;
+import java.util.Map;
 
+@Data
 public class Cellar {
 
     private final int barrelCount = 3;
-    private ArrayList<Barrel> barrels = new ArrayList<>();
-
-    public ArrayList<Barrel> conclusionBarrels() {
-        return barrels;
+    private Map<Integer,Barrel> barrelHashMap = new HashMap();
+    public Map<Integer,Barrel> conclusionBarrelsHashMap() {
+        return barrelHashMap;
     }
 
-    public int getBarrelCount() {
-        return barrelCount;
+    public void addBarrels(Barrel descriptionProduct) {
+        boolean pr = true;
+        for (int i = 1; i <= barrelCount ; i++) {
+            if (!barrelHashMap.containsKey(i)) {
+                barrelHashMap.put(i, descriptionProduct);
+                pr = false;
+                break;
+            }
+        }
+        if (pr) {
+            System.out.println("There wasn't enough space, oops ...");
+        }
     }
 
-    public void addBarrels(Barrel descriptionProduct){
-        barrels.add(descriptionProduct);
+    public void disposalBarrels(int key){
+        barrelHashMap.remove(key);
     }
 
-    public void getBarrels(int index){
-        barrels.set(index, null);
-    }
-
-    public int getIndexBarrels(Barrel obj){
-        return (barrels.indexOf(obj));
-    }
-
-    public boolean checkCellar(Barrel obj){
-        return (barrels.contains(obj));
-    }
-
-    @Override
-    public String toString() {
-        return "ru.Cellar{ " + barrels.toString() + "}";
+    public void outCollectionBarrelsBasement(Cellar cellar) {
+        for (Map.Entry<Integer, Barrel> item : conclusionBarrelsHashMap().entrySet())
+        {
+            System.out.printf("Barrel: %d  Label: %s \n", item.getKey(), item.getValue());
+        }
+        if (barrelHashMap.size() == barrelCount) {
+            System.out.println("We'll have to wait, there's no place");
+        } else {
+            System.out.println("Free: " + (barrelCount - barrelHashMap.size()));
+        }
     }
 }
