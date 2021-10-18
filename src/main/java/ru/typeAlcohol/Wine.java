@@ -1,19 +1,19 @@
 package ru.typeAlcohol;
 
+import ru.Extract;
+
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class Wine extends ru.Barrel {
 
     private String excerpt;
     private String nameOfAlcohol;
-    private Calendar yearCreation;
+    private final LocalDate yearCreation;
     private String city;
 
-    public Wine(int barrelSize, int fortress, String nameOfAlcohol, Calendar yearCreation, String city) {
+    public Wine(int barrelSize, int fortress, String nameOfAlcohol, LocalDate yearCreation, String city) {
         super(barrelSize, fortress, nameOfAlcohol, yearCreation);
-        Calendar localDate = new GregorianCalendar(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate localDate = LocalDate.now(); //new GregorianCalendar(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
         this.excerpt = Extract.findingDateDifference(yearCreation,localDate);
         this.nameOfAlcohol = nameOfAlcohol;
         this.yearCreation = yearCreation;
@@ -22,7 +22,7 @@ public class Wine extends ru.Barrel {
 
     @Override
     public String toString() {
-        String dateYearCreation = yearCreation.get(Calendar.DAY_OF_MONTH) + "." + yearCreation.get(Calendar.MONTH) + "." + yearCreation.get(Calendar.YEAR);
+        String dateYearCreation = yearCreation.getDayOfMonth() + "." + yearCreation.getMonthValue() + "." + yearCreation.getYear();
         return nameOfAlcohol + ", harvest " + dateYearCreation + " excerpt " + excerpt;
     }
 }

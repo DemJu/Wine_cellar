@@ -1,7 +1,7 @@
 package ru;
 
 import lombok.Data;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 @Data
 public abstract class Barrel {
@@ -10,9 +10,9 @@ public abstract class Barrel {
     private int barrelSize;
     private int fortress;
     private String nameOfAlcohol;
-    private Calendar yearCreation;
+    private LocalDate yearCreation;
 
-    public Barrel(int barrelSize, int fortress, String nameOfAlcohol, Calendar yearCreation) {
+    public Barrel(int barrelSize, int fortress, String nameOfAlcohol, LocalDate yearCreation) {
         this.barrelSize = barrelSize;
         this.fortress = fortress;
         this.nameOfAlcohol = nameOfAlcohol;

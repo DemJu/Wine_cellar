@@ -2,19 +2,17 @@ package ru;
 
 import ru.typeAlcohol.Champagne;
 import ru.typeAlcohol.Wine;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class Application {
 
     public static void main(String[] args) {
-        Cellar cellar = new Cellar();
 
-        Calendar date = new GregorianCalendar(2000, Calendar.JULY, 7);
+        Cellar cellar = new Cellar();
+        LocalDate date = LocalDate.of(2000, 6, 7);
         Wine wine = new Wine(19,40,"Cahors", date,"Izhevsk");
         cellar.addBarrels(wine);
-
-        date.set(1997, Calendar.AUGUST,7);
+        date = LocalDate.of(1997,7,7);
         Champagne champagne = new Champagne(15,10,"Champagne", date);
         cellar.addBarrels(champagne);
 

@@ -1,4 +1,4 @@
 # Project exclude paths
 /target/
 .idea/
-Windowsill.iml
+*.iml

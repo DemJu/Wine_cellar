@@ -1,15 +1,15 @@
 package ru.typeAlcohol;
 
 import ru.Barrel;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 public class Champagne extends Barrel {
 
     private String city;
     private String nameOfAlcohol;
-    private Calendar yearCreation;
+    private final LocalDate yearCreation;
 
-    public Champagne(int barrelSize, int fortress, String nameOfAlcohol, Calendar yearCreation) {
+    public Champagne(int barrelSize, int fortress, String nameOfAlcohol, LocalDate yearCreation) {
         super(barrelSize, fortress, nameOfAlcohol, yearCreation);
         this.city = "Champagne";
         this.nameOfAlcohol = nameOfAlcohol;
@@ -18,7 +18,7 @@ public class Champagne extends Barrel {
 
     @Override
     public String toString() {
-        String dateYearCreation = yearCreation.get(Calendar.DAY_OF_MONTH) + "." + yearCreation.get(Calendar.MONTH) + "." + yearCreation.get(Calendar.YEAR);
+        String dateYearCreation = yearCreation.getDayOfMonth() + "." + yearCreation.getMonthValue() + "." + yearCreation.getYear();
         return nameOfAlcohol + ", year of creation " + dateYearCreation;
     }
 }
