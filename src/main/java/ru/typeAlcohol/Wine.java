@@ -1,7 +1,6 @@
 package ru.typeAlcohol;
 
 import ru.Extract;
-
 import java.time.LocalDate;
 
 public class Wine extends ru.Barrel {
@@ -13,7 +12,7 @@ public class Wine extends ru.Barrel {
 
     public Wine(int barrelSize, int fortress, String nameOfAlcohol, LocalDate yearCreation, String city) {
         super(barrelSize, fortress, nameOfAlcohol, yearCreation);
-        LocalDate localDate = LocalDate.now(); //new GregorianCalendar(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate localDate = LocalDate.now();
         this.excerpt = Extract.findingDateDifference(yearCreation,localDate);
         this.nameOfAlcohol = nameOfAlcohol;
         this.yearCreation = yearCreation;

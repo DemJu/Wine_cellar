@@ -8,38 +8,33 @@ import java.util.Map;
 public class Cellar {
 
     private final int barrelCount = 3;
-    private Map<Integer,Barrel> barrelHashMap = new HashMap();
-    public Map<Integer,Barrel> conclusionBarrelsHashMap() {
+    private Map<String,Barrel> barrelHashMap = new HashMap();
+
+    public Map<String,Barrel> conclusionBarrelsHashMap() {
         return barrelHashMap;
     }
 
     public void addBarrels(Barrel descriptionProduct) {
-        boolean pr = true;
-        for (int i = 1; i <= barrelCount ; i++) {
-            if (!barrelHashMap.containsKey(i)) {
-                barrelHashMap.put(i, descriptionProduct);
-                pr = false;
-                break;
+        try {
+            if (barrelHashMap.size() < barrelCount) {
+                barrelHashMap.put(descriptionProduct.toString(), descriptionProduct);
+            } else {
+                System.out.println("There wasn't enough room in the cellar, oops...");
             }
-        }
-        if (pr) {
-            System.out.println("There wasn't enough space, oops ...");
+        } catch (NullPointerException e) {
+            System.out.println("You can't put emptiness in a barrel");
         }
     }
 
-    public void disposalBarrels(int key){
+    public void disposalBarrels(String key){
         barrelHashMap.remove(key);
     }
 
     public void outCollectionBarrelsBasement(Cellar cellar) {
-        for (Map.Entry<Integer, Barrel> item : conclusionBarrelsHashMap().entrySet())
+        for (Map.Entry<String, Barrel> item : conclusionBarrelsHashMap().entrySet())
         {
-            System.out.printf("Barrel: %d  Label: %s \n", item.getKey(), item.getValue());
+            System.out.println(item.getKey());
         }
-        if (barrelHashMap.size() == barrelCount) {
-            System.out.println("We'll have to wait, there's no place");
-        } else {
-            System.out.println("Free: " + (barrelCount - barrelHashMap.size()));
-        }
+        System.out.println("Free: " + (barrelCount - barrelHashMap.size()));
     }
 }

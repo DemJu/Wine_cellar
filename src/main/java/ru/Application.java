@@ -19,11 +19,10 @@ public class Application {
         System.out.println("before: ");
         cellar.outCollectionBarrelsBasement(cellar);
 
-        cellar.disposalBarrels(2);
-
+        cellar.disposalBarrels("Champagne, year of creation 7.7.1997");
         System.out.println();
 
-        System.out.println("after taking a bottle of champagne: ");
+        System.out.println("after: ");
         cellar.outCollectionBarrelsBasement(cellar);
     }
 }
