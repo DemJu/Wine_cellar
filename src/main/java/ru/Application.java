@@ -15,6 +15,7 @@ public class Application {
         date = LocalDate.of(1997,7,7);
         Champagne champagne = new Champagne(15,10,"Champagne", date);
         cellar.addBarrels(champagne);
+        cellar.addBarrels(champagne);
 
         System.out.println("before: ");
         cellar.outCollectionBarrelsBasement(cellar);
@@ -23,6 +24,11 @@ public class Application {
         System.out.println();
 
         System.out.println("after: ");
+        cellar.outCollectionBarrelsBasement(cellar);
+
+        System.out.println();
+        cellar.getAllBarrels();
+        System.out.println("after cleaning the cellar: ");
         cellar.outCollectionBarrelsBasement(cellar);
     }
 }
