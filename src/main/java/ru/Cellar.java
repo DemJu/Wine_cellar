@@ -1,57 +1,46 @@
 package ru;
 
 import lombok.Data;
+import ru.Exceptions.BarrelProcessing;
+import ru.Exceptions.CheckingBarrels;
+
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
 public class Cellar {
 
-    private Map<String,Barrel> barrelHashMap = new HashMap();
+    private Map<String, Barrel> barrelHashMap = new HashMap();
 
-    public Map<String,Barrel> conclusionBarrelsHashMap() {
+    public Map<String, Barrel> conclusionBarrelsHashMap() {
         return barrelHashMap;
     }
 
-    public void addBarrels(Barrel descriptionProduct) {
+    public String addBarrels(Cellar cellar, Barrel descriptionProduct, String key) {
         try {
-            if (!barrelHashMap.containsKey(descriptionProduct.toString())) {
-                barrelHashMap.put(descriptionProduct.toString(), descriptionProduct);
-            } else {
-                throw new RuntimeException();
-            }
-        } catch (NullPointerException e) {
-            System.out.println();
-            System.out.println("You can't put emptiness in a barrel");
-            System.out.println();
-        } catch (RuntimeException r) {
-            System.out.println();
-            System.out.println("A barrel with such a label already exists");
-            System.out.println();
+            return BarrelProcessing.putBarrels(cellar, descriptionProduct, key);
+        } catch (CheckingBarrels checkingBarrels) {
+            return checkingBarrels.getMessage();
         }
     }
 
-    public void disposalBarrels(String key){
+    public String disposalBarrels(Cellar cellar, String key) {
         try {
-            if (barrelHashMap.containsKey(key)) {
-                barrelHashMap.remove(key);
-            } else {
-                throw new NullPointerException();
-            }
-        } catch (NullPointerException n) {
-            System.out.println("A barrel with such a label was not found");
+            return BarrelProcessing.removeBarrels(cellar, key);
+        } catch (CheckingBarrels checkingBarrels) {
+            return checkingBarrels.getMessage();
         }
     }
 
-    public void getAllBarrels() {
+    public String getAllBarrels() {
         barrelHashMap.clear();
-        System.out.println("The cellar is cleared");
+        return "The cellar is cleared";
     }
-
+    /*
     public void outCollectionBarrelsBasement(Cellar cellar) {
-        for (Map.Entry<String, Barrel> item : conclusionBarrelsHashMap().entrySet())
-        {
+        for (Map.Entry<String, Barrel> item : conclusionBarrelsHashMap().entrySet()) {
             System.out.println(item.getKey());
         }
     }
+    */
 }

@@ -1,6 +1,7 @@
 package ru.typeAlcohol;
 
 import ru.Extract;
+
 import java.time.LocalDate;
 
 public class Wine extends ru.Barrel {
@@ -13,7 +14,7 @@ public class Wine extends ru.Barrel {
     public Wine(int barrelSize, int fortress, String nameOfAlcohol, LocalDate yearCreation, String city) {
         super(barrelSize, fortress, nameOfAlcohol, yearCreation);
         LocalDate localDate = LocalDate.now();
-        this.excerpt = Extract.findingDateDifference(yearCreation,localDate);
+        this.excerpt = Extract.findingDateDifference(yearCreation, localDate);
         this.nameOfAlcohol = nameOfAlcohol;
         this.yearCreation = yearCreation;
         this.city = city;
@@ -22,6 +23,6 @@ public class Wine extends ru.Barrel {
     @Override
     public String toString() {
         String dateYearCreation = yearCreation.getDayOfMonth() + "." + yearCreation.getMonthValue() + "." + yearCreation.getYear();
-        return nameOfAlcohol + ", harvest " + dateYearCreation + " excerpt " + excerpt;
+        return nameOfAlcohol + ": harvest " + dateYearCreation + " excerpt " + excerpt;
     }
 }

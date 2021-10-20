@@ -1,6 +1,7 @@
 package ru.typeAlcohol;
 
 import ru.Barrel;
+
 import java.time.LocalDate;
 
 public class Champagne extends Barrel {
@@ -19,6 +20,6 @@ public class Champagne extends Barrel {
     @Override
     public String toString() {
         String dateYearCreation = yearCreation.getDayOfMonth() + "." + yearCreation.getMonthValue() + "." + yearCreation.getYear();
-        return nameOfAlcohol + ", year of creation " + dateYearCreation;
+        return nameOfAlcohol + ": year of creation " + dateYearCreation;
     }
 }
